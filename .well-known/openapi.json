@@ -1,0 +1,50 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Local Reader API",
+        "version": "1.0.0",
+        "description": "This is a simple API documentation for Python's built-in http.server module. The server serves files from the localhost and below, directly mapping the directory structure to HTTP requests. It is specifically designed to read files from the localhost and can be used to list files in a directory."
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Default server URL"
+        }
+    ],
+    "paths": {
+        "{file_path}": {
+            "get": {
+                "operationId": "retrieveOrListFile",
+                "summary": "Retrieve a file or list a directory",
+                "description": "Retrieve a file from the server or list the contents of a directory. The file or directory path is directly mapped to the server's directory structure.",
+                "parameters": [
+                    {
+                        "name": "file_path",
+                        "in": "path",
+                        "description": "Path to the file or directory to retrieve or list, relative to the server's root directory.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "File retrieved or directory listed successfully",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string",
+                                    "format": "binary"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "File or directory not found"
+                    }
+                }
+            }
+        }
+    }
+}

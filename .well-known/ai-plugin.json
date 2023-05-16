@@ -1,0 +1,18 @@
+{
+    "schema_version": "v1",
+    "name_for_human": "Local Reader",
+    "name_for_model": "localhost_reader",
+    "description_for_human": "A simple method for ChatGPT to read local files.",
+    "description_for_model": "This plugin enables ChatGPT to access and list files on your localhost.",
+    "auth": {
+        "type": "none"
+    },
+    "api": {
+        "type": "openapi",
+        "url": "http://localhost:8000/.well-known/openapi.json",
+        "is_user_authenticated": false
+    },
+    "logo_url": "http://localhost:8000/.well-known/logo.png",
+    "contact_email": "phate334@gmail.com",
+    "legal_info_url": "http://www.example.com/legal"
+}
